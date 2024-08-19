@@ -23,7 +23,7 @@ const Form = () => {
     });
 
     const data = await response.json();
-    console.log("Product added:", data); // This logs in the browser
+    console.log("Product added:", data);
   };
 
   return (

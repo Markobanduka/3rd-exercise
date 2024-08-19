@@ -1,5 +1,3 @@
-// src/services/productService.ts
-
 interface AddProductProps {
   title: string;
   price: number;
@@ -30,10 +28,10 @@ export const addProduct = async ({
     }
 
     const data = await response.json();
-    console.log("Product added to external API:", data); // Log to terminal
+    console.log("Product added to external API:", data);
     return data;
   } catch (error) {
-    console.error("Error adding product:", error); // Log any errors to the terminal
-    throw error; // Re-throw the error to handle it elsewhere if needed
+    console.error("Error adding product:", error);
+    throw error;
   }
 };
