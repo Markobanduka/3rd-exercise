@@ -7,15 +7,19 @@ import { FormEvent, useState } from "react";
 import { User } from "firebase/auth";
 
 const RegisterPage = () => {
-  const { user }: User | any = useAuth();
-  console.log(user);
+  const { loggedIn }: User | any = useAuth();
+  console.log(loggedIn);
+
+  if (loggedIn) {
+    window.location.href = "/";
+  }
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const res = await createUserWithEmailAndPassword(auth, email, password);
+    await createUserWithEmailAndPassword(auth, email, password);
   };
 
   return (

@@ -1,43 +1,39 @@
 "use client";
 
+import { useAuth } from "@/app/context/authContext";
+import { auth } from "@/app/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { FormEvent, useState } from "react";
 
 const Login = () => {
-  const [username, setUsername] = useState<string | null>(null);
+  signInWithEmailAndPassword(auth, "banduka46@gmail.com", "123456");
+
+  const { loggedIn } = useAuth();
+
+  if (loggedIn) {
+    window.location.href = "/";
+  }
+
+  const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
 
   const loginUser = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(username, password);
 
-    if (username === null || password === null) {
-      alert("Please enter both username and password");
+    if (email === null || password === null) {
+      alert("Please enter both email and password");
       return;
     }
-    const response = await fetch("/api/auth_user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
-
-    if (response.status !== 200) {
-      alert("Something went wrong, try again later");
-      return;
-    }
-
-    const data = await response.json();
-    localStorage.setItem("token", data.token);
+    signInWithEmailAndPassword(auth, email, password);
   };
 
   return (
     <div>
       <form>
         <input
-          onChange={(e) => setUsername(e.target.value)}
-          type="text"
-          placeholder="Username"
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          placeholder="Email"
         />
         <input
           onChange={(e) => setPassword(e.target.value)}

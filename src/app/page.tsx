@@ -1,5 +1,9 @@
-import Image from "next/image";
+import AllProducts from "@/components/AllProducts";
 
 export default function Home() {
-  return <div>Hello world!</div>;
+  return (
+    <div>
+      <AllProducts />
+    </div>
+  );
 }
