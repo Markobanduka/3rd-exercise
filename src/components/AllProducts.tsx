@@ -38,7 +38,7 @@ const AllProducts = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-6">All Products</h1>
-      <CreateProduct /> {/* Create a new product */}
+      <CreateProduct />
       <div className="overflow-x-auto mt-6">
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
@@ -63,7 +63,7 @@ const AllProducts = () => {
                 <td className="px-6 py-4 border-b border-gray-200">
                   <p>{product.cena}</p>
                 </td>
-                <td className="px-6 py-4 border-b border-gray-200 space-x-4">
+                <td className="px-6 py-4 border-b border-gray-200 space-x-4 ">
                   <UpdateProduct
                     id={product.id}
                     currentIme={product.ime}

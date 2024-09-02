@@ -13,7 +13,7 @@ const CreateProduct = () => {
     try {
       await addDoc(collection(db, "proizvodi"), {
         ime,
-        cena: parseFloat(cena), // Ensure 'cena' is a number
+        cena: parseFloat(cena),
       });
       setIme("");
       setCena("");
